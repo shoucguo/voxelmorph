@@ -14,6 +14,10 @@ assuming voxelmorph is setup at `/path/to/voxelmorph/`:
 export PYTHONPATH=$PYTHONPATH:/path/to/voxelmorph/ext/neuron/:/path/to/voxelmorph/ext/pynd-lib/:/path/to/voxelmorph/ext/pytools-lib/
 ```
 
+```
+export PYTHONPATH=$PYTHONPATH:/n/ir71/d1/shoucguo/proj/voxelmorph/ext/neuron/:/n/ir71/d1/shoucguo/proj/voxelmorph/ext/pynd-lib/:/n/ir71/d1/shoucguo/proj/voxelmorph/ext/pytools-lib/
+```
+
 If you would like to train/test your own model, you will likely need to write some of the data loading code in 'datagenerator.py' for your own datasets and data formats. There are several hard-coded elements related to data preprocessing and format. 
 
 
@@ -34,6 +38,7 @@ We provide a T1 brain atlas used in our papers at `data/atlas_norm.npz`.
 ## Testing (measuring Dice scores)
 1. Put test filenames in data/test_examples.txt, and anatomical labels in data/test_labels.mat.
 2. Run `python test_miccai2018.py [gpu-id] [model_dir] [iter-num]`
+3. Run `python test_miccai2018.py --gpu 2 --model_dir /n/ir71/d1/shoucguo/proj/voxelmorph/models --iter-num 5`
 
 
 ## Parameter choices
