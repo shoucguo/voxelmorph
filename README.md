@@ -38,7 +38,7 @@ We provide a T1 brain atlas used in our papers at `data/atlas_norm.npz`.
 ## Testing (measuring Dice scores)
 1. Put test filenames in data/test_examples.txt, and anatomical labels in data/test_labels.mat.
 2. Run `python test_miccai2018.py [gpu-id] [model_dir] [iter-num]`
-3. Run `python test_miccai2018.py --gpu 2 --model_dir /n/ir71/d1/shoucguo/proj/voxelmorph/models --iter-num 5`
+3. Run `python test_miccai2018.py 2 /n/ir71/d1/shoucguo/proj/voxelmorph/models 5`
 
 
 ## Parameter choices
