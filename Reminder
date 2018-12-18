@@ -1,0 +1,17 @@
+source ~/.bashrc
+cd /n/ir71/d1/shoucguo/proj/voxelmorph/src
+python test_miccai2018.py 2 /n/ir71/d1/shoucguo/proj/voxelmorph/models miccai2018_10_02_init1
+
+
+nvidia-smi -l 1
+
+
+git clone https://github.com/shoucguo/voxelmorph.git # forked repo
+git add .gitignore # edit and save
+git status # red items
+git add src
+git status # green items
+git commit -m 'update'
+git status # ?
+git push origin master
+
