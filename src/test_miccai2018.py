@@ -24,7 +24,7 @@ from medipy.metrics import dice
 import datagenerators
 
 # Test file and anatomical labels we want to evaluate
-test_brain_file = open('...path/here//test_examples.txt')
+test_brain_file = open('../data/test_examples.txt')
 test_brain_strings = test_brain_file.readlines()
 test_brain_strings = [x.strip() for x in test_brain_strings]
 n_batches = len(test_brain_strings)
@@ -40,7 +40,7 @@ def test(gpu_id, model_dir, iter_num,
          vol_size=(160,192,224),
          nf_enc=[16,32,32,32],
          nf_dec=[32,32,32,32,16,3],
-         save_file=None):
+         save_file='../data/results.mat'):
     """
     test via segmetnation propagation
     works by iterating over some iamge files, registering them to atlas,
@@ -56,6 +56,7 @@ def test(gpu_id, model_dir, iter_num,
     set_session(tf.Session(config=config))
 
     # load weights of model
+    # import pdb; pdb.set_trace()
     with tf.device(gpu):
         # if testing miccai run, should be xy indexing.
         net = networks.miccai2018_net(vol_size, nf_enc, nf_dec, use_miccai_int=False, indexing='ij')  

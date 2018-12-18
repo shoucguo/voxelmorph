@@ -1,1 +1,20 @@
-scratch/*
+# Byte-compiled
+__pycache__/
+*.py[cod]
+
+# Data
+*.tif
+*.jpg
+#*.txt
+*.tfw
+#*.mat
+*.h5
+*.tar
+*.zip
+*.gz
+
+# Crashed file
+*.swp
+
+# IPython
+*.ipynb
