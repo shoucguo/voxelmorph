@@ -2,17 +2,37 @@ source ~/.bashrc
 source activate tf
 cd /n/ir71/d1/shoucguo/proj/voxelmorph/src
 python test_miccai2018.py 2 /n/ir71/d1/shoucguo/proj/voxelmorph/models miccai2018_10_02_init1
+(tf) history
 
+nvidia-smi -l 1 
 
-nvidia-smi -l 1
-
-
+%% git
 git clone https://github.com/shoucguo/voxelmorph.git # forked repo
 git add .gitignore # edit and save
 git status # red items
 git add src
 git status # green items
-git commit -m 'update'
+git commit -m 'update' 
 git status # ?
 git push origin master
+
+git pull origin master # A, B, local data communicate
+
+%% debug
+import pdb; pdb.set_trace()
+n (enter) # by line
+s (enter) # by step when function
+c # b1 to b2
+b 70
+b function name (tab, enter)?
+l # current line
+p # for checking variables?
+
+%% 
+np.newaxis
+np.load, split,
+
+
+
+
 
