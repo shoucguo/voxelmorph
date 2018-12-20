@@ -12,9 +12,9 @@ git add .gitignore # edit and save
 git status # red items
 git add src
 git status # green items
-git commit -m 'update' 
+git commit -m 'update' # main folder
 git status # ?
-git push origin master
+git push origin master 
 
 git pull origin master # A, B, local data communicate
 
