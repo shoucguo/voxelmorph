@@ -1,6 +1,5 @@
 """
 data generators for VoxelMorph
-
 for the CVPR and MICCAI papers, we have data arranged in train/validate/test folders
 inside each folder is a /vols/ and a /asegs/ folder with the volumes
 and segmentations. All of our papers use npz formated data.
@@ -8,7 +7,7 @@ and segmentations. All of our papers use npz formated data.
 
 import os, sys
 import numpy as np
-
+import scipy.io as sio
 
 def cvpr2018_gen(gen, atlas_vol_bs, batch_size=1):
     """ generator used for cvpr 2018 model """
@@ -48,11 +47,9 @@ def miccai2018_gen(gen, atlas_vol_bs, batch_size=1, bidir=False):
 def example_gen(vol_names, batch_size=1, return_segs=False, seg_dir=None):
     """
     generate examples
-
     Parameters:
         vol_names: a list or tuple of filenames
         batch_size: the size of the batch (default: 1)
-
         The following are fairly specific to our data structure, please change to your own
         return_segs: logical on whether to return segmentations
         seg_dir: the segmentations directory.
@@ -104,6 +101,35 @@ def load_example_by_name(vol_name, seg_name):
 
     return tuple(return_vals)
 
+def load_example_mat2(vol_name, seg_name): # v2, for new2
+    """
+    load a specific volume and segmentation
+    """
+    X = sio.loadmat(vol_name)['vol_data']
+    X = X[np.newaxis, ..., np.newaxis]
+
+    return_vals = [X]
+    
+    X_seg = load_volfile(seg_name)
+    X_seg = X_seg[np.newaxis, ..., np.newaxis]
+
+    return_vals.append(X_seg)
+
+    return tuple(return_vals)
+
+
+def load_example_mat1(vol_name): ## read in .mat file
+    """
+    load a specific volume and segmentation
+    """
+    X = sio.loadmat(vol_name)['vol_data']
+    X = X[np.newaxis, ..., np.newaxis]
+
+    return_vals = [X]
+
+    return tuple(return_vals)
+
+
 
 def load_volfile(datafile):
     """
@@ -127,4 +153,3 @@ def load_volfile(datafile):
         X = np.load(datafile)['vol_data']
 
     return X
-

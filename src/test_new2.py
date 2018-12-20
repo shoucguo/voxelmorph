@@ -1,5 +1,5 @@
 """
-Test models for MICCAI 2018 submission of VoxelMorph.
+Use New data as vol input, also inlcudes seg from given data
 """
 
 # py imports
@@ -24,7 +24,7 @@ from medipy.metrics import dice
 import datagenerators
 
 # Test file and anatomical labels we want to evaluate
-test_brain_file = open('../data/test_examples.txt')
+test_brain_file = open('../data/test_examples_new2.txt')
 test_brain_strings = test_brain_file.readlines()
 test_brain_strings = [x.strip() for x in test_brain_strings]
 n_batches = len(test_brain_strings)
@@ -74,15 +74,15 @@ def test(gpu_id, model_dir, iter_num,
     
     # prepare a matrix of dice values
     dice_vals = np.zeros((len(good_labels), n_batches))
-    # import pdb; pdb.set_trace()
+    import pdb; pdb.set_trace()
     for k in range(n_batches):
         # get data
         vol_name, seg_name = test_brain_strings[k].split(",")
-        X_vol, X_seg = datagenerators.load_example_by_name(vol_name, seg_name)
+        X_vol, X_seg = datagenerators.load_example_mat2(vol_name, seg_name) ##!!
 
         # predict transform
         with tf.device(gpu):
-            pred = diff_net.predict([X_vol, atlas_vol])
+            pred = diff_net.predict([X_vol, atlas_vol]) # problem of this step solved by normalize the data
 
         # Warp segments with flow
         if compute_type == 'CPU':
