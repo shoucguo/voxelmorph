@@ -1,0 +1,1 @@
+/n/ir71/d1/shoucguo/proj/voxelmorph/data/test_vol_new1.mat,/n/ir71/d1/shoucguo/proj/voxelmorph/data/test_seg.npz
