@@ -32,6 +32,9 @@ p # for checking variables?
 np.newaxis
 np.load, split,
 
+%% GPU
+export CUDA_VISIBLE_DEVICES=2 # terminal
+os.environ['CUDA_VISIBLE_DEVICES'] = '2'
 
 
 
